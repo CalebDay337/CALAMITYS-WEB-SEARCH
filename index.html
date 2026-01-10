@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CALAMITY'S WEB SEARCH | THE MASTER DIRECTORY</title>
+    
+    <meta name="google-site-verification" content="PASTE_YOUR_CODE_HERE" />
+    
     <meta name="description" content="CALAMITY's web search - The ultimate high-tech directory for gaming, coding, and web resources.">
-<meta name="keywords" content="Calamity, web search, coding links, Roblox links, Minecraft links, developer directory">
-<meta name="author" content="Calamity">
+    <meta name="keywords" content="Calamity, web search, coding links, Roblox links, developer directory">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -27,9 +30,8 @@
             overflow: hidden;
         }
 
-        /* Side Navigation */
         nav {
-            width: 320px; /* Slightly wider to fit the new name */
+            width: 320px;
             background: var(--panel-bg);
             border-right: 1px solid #333;
             display: flex;
@@ -64,7 +66,6 @@
             color: var(--neon-green);
         }
 
-        /* Main Dashboard Area */
         main {
             flex: 1;
             overflow-y: auto;
@@ -94,7 +95,6 @@
 
         .search-bar:focus { border-color: var(--neon-green); box-shadow: 0 0 10px var(--border-glow); }
 
-        /* The Grid System */
         .ultra-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
@@ -150,13 +150,11 @@
 
         .sys-clock { color: var(--neon-green); font-size: 1.5rem; }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: var(--deep-dark); }
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--neon-green); }
 
-        /* Newsletter Glow Box */
         .news-box {
             margin-top: 50px;
             padding: 30px;
@@ -193,7 +191,6 @@
         <a href="#" class="nav-item"><i class="fas fa-shield-alt"></i> SECURITY_HUB</a>
         <div style="margin-top: auto; font-size: 11px; color: #444; line-height: 1.5;">
             NODE_STATUS: ONLINE<br>
-            ENCRYPTION: AES-256<br>
             USER: ADMIN_GUEST
         </div>
     </nav>
@@ -204,8 +201,7 @@
             <div class="sys-clock" id="clock">00:00:00</div>
         </header>
 
-        <div class="ultra-grid" id="mainGrid">
-            </div>
+        <div class="ultra-grid" id="mainGrid"></div>
 
         <div class="news-box">
             <h3 style="color: var(--neon-green)">NETWORK UPDATES</h3>
@@ -226,49 +222,20 @@
         updateClock();
 
         const database = [
-            {
-                name: "Gaming_Sectors",
-                links: ["Roblox", "Minecraft", "Steam", "Epic Games", "Twitch", "Discord", "Riot Games", "Ubisoft", "Battle.net", "Rockstar", "GOG", "Itch.io", "GameJolt", "ArmorGames", "Newgrounds", "Nintendo"]
-            },
-            {
-                name: "Dev_Languages",
-                links: ["Python", "JavaScript", "Rust", "C++", "Golang", "TypeScript", "Kotlin", "Swift", "PHP", "Ruby", "Java", "C#", "Dart", "Assembly", "Lua", "Perl", "Haskell"]
-            },
-            {
-                name: "App_Ecosystem",
-                links: ["Chrome_Store", "Google_Play", "App_Store", "MS_Store", "F-Droid", "Snapcraft", "Flathub", "Homebrew", "NPM", "PyPI", "Cargo", "NuGet", "RubyGems"]
-            },
-            {
-                name: "AI_Terminals",
-                links: ["ChatGPT", "Claude AI", "Midjourney", "Gemini", "Perplexity", "HuggingFace", "StableDiffusion", "Llama3", "Mistral AI", "CivitAI", "RunwayML"]
-            },
-            {
-                name: "Cloud_Infrastruct",
-                links: ["GitHub", "GitLab", "Bitbucket", "AWS", "GoogleCloud", "DigitalOcean", "Vercel", "Netlify", "Firebase", "Heroku", "DockerHub", "Cloudflare"]
-            },
-            {
-                name: "Web_Resources",
-                links: ["MDN_Docs", "W3Schools", "StackOverflow", "Figma", "Canva", "Tailwind", "Bootstrap", "FontAwesome", "GoogleFonts", "Unsplash", "Dribbble", "Behance"]
-            }
+            { name: "Gaming_Sectors", links: ["Roblox", "Minecraft", "Steam", "Epic Games", "Twitch", "Discord", "Riot Games", "Ubisoft", "Battle.net"] },
+            { name: "Dev_Languages", links: ["Python", "JavaScript", "Rust", "C++", "Golang", "TypeScript", "Kotlin", "Swift", "PHP", "Ruby"] },
+            { name: "App_Ecosystem", links: ["Chrome_Store", "Google_Play", "App_Store", "MS_Store", "F-Droid", "Snapcraft", "Flathub"] },
+            { name: "AI_Terminals", links: ["ChatGPT", "Claude AI", "Midjourney", "Gemini", "Perplexity", "HuggingFace", "StableDiffusion"] },
+            { name: "Cloud_Infrastruct", links: ["GitHub", "GitLab", "Bitbucket", "AWS", "GoogleCloud", "DigitalOcean", "Vercel", "Netlify"] },
+            { name: "Web_Resources", links: ["MDN_Docs", "W3Schools", "StackOverflow", "Figma", "Canva", "Tailwind", "Bootstrap"] }
         ];
 
         const grid = document.getElementById('mainGrid');
-
         database.forEach(sector => {
             let card = document.createElement('div');
             card.className = 'sector-card';
-            
-            let linksHTML = sector.links.map(l => 
-                `<a href="https://www.google.com/search?q=${l}" target="_blank" class="entry">> ${l}</a>`
-            ).join('');
-
-            card.innerHTML = `
-                <div class="sector-header">
-                    <span>${sector.name}</span>
-                    <i class="fas fa-project-diagram"></i>
-                </div>
-                <div class="link-columns">${linksHTML}</div>
-            `;
+            let linksHTML = sector.links.map(l => `<a href="https://www.google.com/search?q=${l}" target="_blank" class="entry">> ${l}</a>`).join('');
+            card.innerHTML = `<div class="sector-header"><span>${sector.name}</span><i class="fas fa-project-diagram"></i></div><div class="link-columns">${linksHTML}</div>`;
             grid.appendChild(card);
         });
 
