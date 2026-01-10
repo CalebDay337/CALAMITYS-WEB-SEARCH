@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALAMITY'S WEB SEARCH | THE MASTER DIRECTORY</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --neon-green: #00ff41;
+            --deep-dark: #0a0a0b;
+            --panel-bg: #141417;
+            --border-glow: rgba(0, 255, 65, 0.2);
+            --text-dim: #888;
+        }
+
+        body {
+            background-color: var(--deep-dark);
+            color: #d1d1d1;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Side Navigation */
+        nav {
+            width: 320px; /* Slightly wider to fit the new name */
+            background: var(--panel-bg);
+            border-right: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            color: var(--neon-green);
+            font-weight: bold;
+            margin-bottom: 40px;
+            text-shadow: 0 0 10px var(--neon-green);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-item {
+            padding: 15px;
+            color: var(--text-dim);
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-item:hover {
+            background: rgba(0, 255, 65, 0.1);
+            color: var(--neon-green);
+        }
+
+        /* Main Dashboard Area */
+        main {
+            flex: 1;
+            overflow-y: auto;
+            padding: 40px;
+            background-image: radial-gradient(circle at center, #1a1a1e 0%, #0a0a0b 100%);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+        }
+
+        .search-bar {
+            background: #000;
+            border: 1px solid #444;
+            padding: 15px 25px;
+            width: 60%;
+            color: var(--neon-green);
+            border-radius: 4px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .search-bar:focus { border-color: var(--neon-green); box-shadow: 0 0 10px var(--border-glow); }
+
+        /* The Grid System */
+        .ultra-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 25px;
+        }
+
+        .sector-card {
+            background: rgba(20, 20, 23, 0.9);
+            border: 1px solid #333;
+            border-radius: 4px;
+            padding: 25px;
+            transition: 0.3s;
+        }
+
+        .sector-card:hover {
+            border-color: var(--neon-green);
+            box-shadow: 0 0 20px var(--border-glow);
+        }
+
+        .sector-header {
+            color: var(--neon-green);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #222;
+            padding-bottom: 10px;
+        }
+
+        .link-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .entry {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.85rem;
+            padding: 6px;
+            border-left: 2px solid transparent;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .entry:hover {
+            color: #fff;
+            border-left-color: var(--neon-green);
+            background: rgba(0, 255, 65, 0.05);
+        }
+
+        .sys-clock { color: var(--neon-green); font-size: 1.5rem; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--deep-dark); }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--neon-green); }
+
+        /* Newsletter Glow Box */
+        .news-box {
+            margin-top: 50px;
+            padding: 30px;
+            border: 1px solid var(--neon-green);
+            background: rgba(0, 255, 65, 0.02);
+            text-align: center;
+        }
+
+        .news-box input {
+            background: #000;
+            border: 1px solid #444;
+            color: white;
+            padding: 10px;
+            width: 250px;
+        }
+
+        .news-box button {
+            background: var(--neon-green);
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">CALAMITY's web search</div>
+        <a href="#" class="nav-item"><i class="fas fa-terminal"></i> CORE_DASHBOARD</a>
+        <a href="#" class="nav-item"><i class="fas fa-code-branch"></i> REPO_ACCESS</a>
+        <a href="#" class="nav-item"><i class="fas fa-satellite"></i> GLOBAL_LINKS</a>
+        <a href="#" class="nav-item"><i class="fas fa-shield-alt"></i> SECURITY_HUB</a>
+        <div style="margin-top: auto; font-size: 11px; color: #444; line-height: 1.5;">
+            NODE_STATUS: ONLINE<br>
+            ENCRYPTION: AES-256<br>
+            USER: ADMIN_GUEST
+        </div>
+    </nav>
+
+    <main>
+        <header>
+            <input type="text" class="search-bar" placeholder="[ EXECUTING SEARCH... ]" id="searchInput" onkeyup="search()">
+            <div class="sys-clock" id="clock">00:00:00</div>
+        </header>
+
+        <div class="ultra-grid" id="mainGrid">
+            </div>
+
+        <div class="news-box">
+            <h3 style="color: var(--neon-green)">NETWORK UPDATES</h3>
+            <p>Enter email to receive automated database syncs.</p>
+            <input type="email" placeholder="user@network.com">
+            <button>SUBSCRIBE</button>
+        </div>
+    </main>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('clock').innerText = now.getHours().toString().padStart(2, '0') + ":" + 
+                now.getMinutes().toString().padStart(2, '0') + ":" + 
+                now.getSeconds().toString().padStart(2, '0');
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        const database = [
+            {
+                name: "Gaming_Sectors",
+                links: ["Roblox", "Minecraft", "Steam", "Epic Games", "Twitch", "Discord", "Riot Games", "Ubisoft", "Battle.net", "Rockstar", "GOG", "Itch.io", "GameJolt", "ArmorGames", "Newgrounds", "Nintendo"]
+            },
+            {
+                name: "Dev_Languages",
+                links: ["Python", "JavaScript", "Rust", "C++", "Golang", "TypeScript", "Kotlin", "Swift", "PHP", "Ruby", "Java", "C#", "Dart", "Assembly", "Lua", "Perl", "Haskell"]
+            },
+            {
+                name: "App_Ecosystem",
+                links: ["Chrome_Store", "Google_Play", "App_Store", "MS_Store", "F-Droid", "Snapcraft", "Flathub", "Homebrew", "NPM", "PyPI", "Cargo", "NuGet", "RubyGems"]
+            },
+            {
+                name: "AI_Terminals",
+                links: ["ChatGPT", "Claude AI", "Midjourney", "Gemini", "Perplexity", "HuggingFace", "StableDiffusion", "Llama3", "Mistral AI", "CivitAI", "RunwayML"]
+            },
+            {
+                name: "Cloud_Infrastruct",
+                links: ["GitHub", "GitLab", "Bitbucket", "AWS", "GoogleCloud", "DigitalOcean", "Vercel", "Netlify", "Firebase", "Heroku", "DockerHub", "Cloudflare"]
+            },
+            {
+                name: "Web_Resources",
+                links: ["MDN_Docs", "W3Schools", "StackOverflow", "Figma", "Canva", "Tailwind", "Bootstrap", "FontAwesome", "GoogleFonts", "Unsplash", "Dribbble", "Behance"]
+            }
+        ];
+
+        const grid = document.getElementById('mainGrid');
+
+        database.forEach(sector => {
+            let card = document.createElement('div');
+            card.className = 'sector-card';
+            
+            let linksHTML = sector.links.map(l => 
+                `<a href="https://www.google.com/search?q=${l}" target="_blank" class="entry">> ${l}</a>`
+            ).join('');
+
+            card.innerHTML = `
+                <div class="sector-header">
+                    <span>${sector.name}</span>
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+                <div class="link-columns">${linksHTML}</div>
+            `;
+            grid.appendChild(card);
+        });
+
+        function search() {
+            let filter = document.getElementById('searchInput').value.toUpperCase();
+            let entries = document.getElementsByClassName('entry');
+            for (let i = 0; i < entries.length; i++) {
+                let txt = entries[i].innerText;
+                entries[i].style.display = txt.toUpperCase().indexOf(filter) > -1 ? "" : "none";
+            }
+        }
+    </script>
+</body>
+</html>
